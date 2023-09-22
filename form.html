@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="form.jsp" name="form" method="get">
+Username:<input type="text" id="uname" name="uname" placeholder="Username">
+<br><br>
+Password:<input type="password" id="pwd" name="pwd" placeholder="Password">
+<br><br>
+Re-enter Password:<input type="password" id="repwd" name="repwd" placeholder="re-enter">
+<br><br>
+Gender:M:<input type="radio" id="gen" name="gen" value="Male">
+	   F:<input type="radio" id="gen" name="gen" value="Female">
+	   O:<input type="radio" id="gen" name="gen" value="Others">
+State:<select name ='state' id="state">
+<option value="select-state">Select State</option>
+<option value="Telangana">Telangana</option>
+<option value="Jammu Kashmir">Jammu Kashmir</option>
+</select>
+<input type="submit" value="submit" id="sub" onclick="show()">
+</form>
+</body>
+<script>
+function show(){
+	var uname=document.getElementById("uname").value;
+	var pwd=document.getElementById("pwd").value;
+	var repwd=document.getElementById("repwd").value;
+	var gen=form.gen.value;
+	var state=document.getElementById("state").value;
+	if(uname!=""){
+		if(!uname.match(/\s/)){
+			if(pwd.length>=8){
+				if(pwd.match(/\w/)&&pwd.match(/\W/)){
+					if(pwd==repwd){
+						if(gen.length!=0){
+							if(state!=""&&state!="select-state"){
+								alert("Valid Response");
+							}
+							else{
+								alert("Select State");
+								event.preventDefault();
+							}
+						}
+						else{
+							alert("slect gender");
+							event.preventDefault();
+						}
+					}
+					else{
+						alert("Password and Re-enter Password must be same");
+						event.preventDefault();
+					}
+				}
+				else{
+					alert("Password must contain special character & alphabets or numbers");
+					event.preventDefault();
+				}
+			}
+			else{
+				alert("Password must contain atleast 8 characters");
+				event.preventDefault();
+			}
+		}
+		else{
+			alert("Username must not contain spaces");
+			event.preventDefault();
+		}
+	}
+	else{
+		alert("Username must not be empty");
+		event.preventDefault();
+	}
+}
+</script>
+</html>
